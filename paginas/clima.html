@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clima - OpenWeather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Consulta del Clima</h1>
+        <p>Información en tiempo real con OpenWeather API</p>
+    </header>
+
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="clima.html">Clima</a></li>
+                <li class="nav-item"><a href="paises.html">Países</a></li>
+                <li class="nav-item"><a href="pokemon.html">Pokémon</a></li>
+                <li class="nav-item"><a href="criptomonedas.html">Criptomonedas</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <section class="section">
+            <h2>Consultar clima por ciudad</h2>
+            <p>Ingrese el nombre de una ciudad para obtener el clima actual.</p>
+
+            <form id="formClima" class="form-bienvenida">
+
+                <div class="form-row">
+                    <label for="ciudad">Ciudad:</label>
+                    <input type="text" id="ciudad" placeholder="Ej: Asunción" required>
+                </div>
+
+                <button type="submit">Consultar Clima</button>
+            </form>
+
+            <div id="resultadoClima" class="resultado-bienvenida"></div>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Clima (OpenWeather)</p>
+    </footer>
+
+    <!-- JS del menú -->
+    <script src="../statics/js/bienvenida.js"></script>
+    <!-- JS de APIs -->
+    <script src="../statics/js/apis.js"></script>
+
+</body>
+</html>
