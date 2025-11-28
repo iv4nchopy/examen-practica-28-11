@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Red Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <h1>Red Social</h1>
+        <p>Publicaciones con imagen, video, audio y likes</p>
+    </header>
+
+    <!-- MENÚ -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="redsocial.html">Red Social</a></li>
+                <li class="nav-item"><a href="comentarios.html">Comentarios</a></li>
+                <li class="nav-item"><a href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="main-content">
+
+        <!-- PUBLICACIÓN 1 -->
+        <div class="card-descripcion">
+            <h3>Publicación con Imagen</h3>
+            <img src="../statics/images/imagen1.jpg" alt="Imagen social">
+            <button class="like-btn" onclick="like(1)">👍 Like <span id="like1">0</span></button>
+        </div>
+
+        <!-- PUBLICACIÓN 2 -->
+        <div class="card-descripcion">
+            <h3>Publicación con Video</h3>
+            <video controls>
+                <source src="../statics/video/video1.mp4" type="video/mp4">
+            </video>
+            <button class="like-btn" onclick="like(2)">👍 Like <span id="like2">0</span></button>
+        </div>
+
+        <!-- PUBLICACIÓN 3 -->
+        <div class="card-descripcion">
+            <h3>Publicación con Audio</h3>
+            <audio controls>
+                <source src="../statics/audio/audio1.mp3" type="audio/mpeg">
+            </audio>
+            <button class="like-btn" onclick="like(3)">👍 Like <span id="like3">0</span></button>
+        </div>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Red Social</p>
+    </footer>
+
+    <!-- JS LIKES -->
+    <script>
+        function like(num) {
+            let span = document.getElementById("like" + num);
+            span.textContent = parseInt(span.textContent) + 1;
+        }
+    </script>
+
+</body>
+</html>
