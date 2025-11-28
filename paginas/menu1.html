@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Personalizado 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+
+    <style>
+        .menu-vertical {
+            width: 220px;
+            background: #020617;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            border-right: 2px solid #2563eb;
+        }
+
+        .menu-vertical a {
+            display: block;
+            color: #e5e7eb;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-bottom: 1px solid #1e40af;
+        }
+
+        .menu-vertical a:hover {
+            background: #2563eb;
+        }
+
+        .contenido-menu {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        @media (max-width: 800px) {
+            .menu-vertical {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .contenido-menu {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ VERTICAL -->
+    <aside class="menu-vertical">
+        <a href="../index.html">🏠 Inicio</a>
+        <a href="html_basico.html">HTML Básico</a>
+        <a href="galeria.html">Galería</a>
+        <a href="operaciones.html">Operaciones</a>
+        <a href="clima.html">Clima</a>
+        <a href="../index.html">Volver</a>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="contenido-menu">
+        <header class="site-header">
+            <h1>Menú Personalizado 1</h1>
+            <p>Ejemplo de menú vertical fijo</p>
+        </header>
+
+        <section class="section">
+            <h2>Descripción</h2>
+            <p>
+                Este es un ejemplo de menú personalizado en formato vertical,
+                ubicado de forma fija en el costado izquierdo de la pantalla.
+                Es ideal para sistemas administrativos o paneles de control.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Ventajas</h2>
+            <ul>
+                <li>Acceso rápido a secciones</li>
+                <li>Visible permanentemente</li>
+                <li>Ideal para pantallas grandes</li>
+                <li>Totalmente adaptable en celular</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+    </main>
+
+</body>
+</html>
