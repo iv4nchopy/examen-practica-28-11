@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Personalizado 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+
+    <style>
+        /* =========================
+           MENÚ HAMBURGUESA
+        ========================== */
+        .menu-hamburguesa {
+            background: #020617;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-hamburguesa h1 {
+            font-size: 18px;
+        }
+
+        .hamburguesa {
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .menu-movil {
+            display: none;
+            flex-direction: column;
+            background: #020617;
+            border-top: 2px solid #2563eb;
+        }
+
+        .menu-movil a {
+            padding: 15px;
+            border-bottom: 1px solid #1e40af;
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-movil a:hover {
+            background: #2563eb;
+        }
+
+        .menu-movil.activo {
+            display: flex;
+        }
+
+        .contenido-principal {
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ HAMBURGUESA -->
+    <header class="menu-hamburguesa">
+        <h1>Menú Móvil</h1>
+        <button class="hamburguesa" id="btnMenu">☰</button>
+    </header>
+
+    <!-- MENÚ DESPLEGABLE -->
+    <nav class="menu-movil" id="menuMovil">
+        <a href="../index.html">Inicio</a>
+        <a href="html_basico.html">HTML Básico</a>
+        <a href="galeria.html">Galería</a>
+        <a href="operaciones.html">Operaciones</a>
+        <a href="clima.html">Clima</a>
+        <a href="../index.html">Volver</a>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="contenido-principal">
+
+        <section class="section">
+            <h2>Menú tipo Móvil</h2>
+            <p>
+                Este es un ejemplo de menú tipo hamburguesa, muy utilizado en
+                aplicaciones móviles y versiones responsive de sitios web.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Funcionamiento</h2>
+            <ul>
+                <li>En PC funciona por botón</li>
+                <li>En celular es totalmente funcional</li>
+                <li>No ocupa espacio fijo</li>
+                <li>Mejora la experiencia de usuario</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- JS del botón hamburguesa -->
+    <script>
+        const btnMenu = document.getElementById("btnMenu");
+        const menuMovil = document.getElementById("menuMovil");
+
+        btnMenu.addEventListener("click", () => {
+            menuMovil.classList.toggle("activo");
+        });
+    </script>
+
+</body>
+</html>
