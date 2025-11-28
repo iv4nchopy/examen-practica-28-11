@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comentarios con Likes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <h1>Comentarios</h1>
+        <p>Secciones con interacción por likes</p>
+    </header>
+
+    <!-- MENÚ -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="comentarios.html">Comentarios</a></li>
+                <li class="nav-item"><a href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a href="redsocial.html">Red Social</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="main-content">
+
+        <!-- SECCIÓN 1 -->
+        <div class="card-descripcion">
+            <h3>Comentario sobre Tecnología</h3>
+            <p>La tecnología avanza cada día y cambia nuestra forma de vivir.</p>
+            <button class="like-btn" onclick="like(1)">👍 Like <span id="like1">0</span></button>
+        </div>
+
+        <!-- SECCIÓN 2 -->
+        <div class="card-descripcion">
+            <h3>Comentario sobre Educación</h3>
+            <p>La educación digital es el futuro del aprendizaje.</p>
+            <button class="like-btn" onclick="like(2)">👍 Like <span id="like2">0</span></button>
+        </div>
+
+        <!-- SECCIÓN 3 -->
+        <div class="card-descripcion">
+            <h3>Comentario sobre Programación</h3>
+            <p>Aprender a programar abre muchas oportunidades laborales.</p>
+            <button class="like-btn" onclick="like(3)">👍 Like <span id="like3">0</span></button>
+        </div>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Comentarios</p>
+    </footer>
+
+    <!-- JS DE LIKES -->
+    <script>
+        function like(num) {
+            let span = document.getElementById("like" + num);
+            span.textContent = parseInt(span.textContent) + 1;
+        }
+    </script>
+
+</body>
+</html>
