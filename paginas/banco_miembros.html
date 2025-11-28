@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Banco - Miembros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Banco</h1>
+        <p>Listado de Miembros del Banco</p>
+    </header>
+
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="banco_tabla.html">Movimientos</a></li>
+                <li class="nav-item"><a href="banco_miembros.html">Miembros</a></li>
+                <li class="nav-item"><a href="productos.html">Productos</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <section class="section">
+            <h2>Clientes Registrados</h2>
+            <p>Listado de miembros registrados en el banco (datos simulados).</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Cédula</th>
+                        <th>Cuenta</th>
+                        <th>Saldo (Gs)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ana González</td>
+                        <td>4.587.321</td>
+                        <td>CA-001245</td>
+                        <td>2.350.000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Carlos Benítez</td>
+                        <td>3.902.114</td>
+                        <td>CA-001246</td>
+                        <td>5.120.000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>María López</td>
+                        <td>5.331.870</td>
+                        <td>CA-001247</td>
+                        <td>1.980.000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>José Martínez</td>
+                        <td>2.774.665</td>
+                        <td>CA-001248</td>
+                        <td>780.000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Lucía Fernández</td>
+                        <td>4.220.150</td>
+                        <td>CA-001249</td>
+                        <td>3.640.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Banco (Miembros)</p>
+    </footer>
+
+    <!-- JS del menú -->
+    <script src="../statics/js/bienvenida.js"></script>
+
+</body>
+</html>
