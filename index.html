@@ -2,243 +2,124 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Proyecto Programación Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Integral de Programación Web</title>
-    <!-- Hoja de estilos principal -->
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="statics/css/estilos.css">
 </head>
 <body>
 
-    <!-- Encabezado del sitio -->
+    <!-- HEADER -->
     <header class="site-header">
-        <div class="logo-titulo">
-            <h1>Proyecto Integral de Programación Web</h1>
-            <p>Trabajo unificado de HTML, CSS, JS, APIs y Multimedia</p>
-        </div>
+        <h1>Proyecto Final de Programación Web</h1>
+        <p>HTML - CSS - JavaScript - APIs - Multimedia</p>
     </header>
 
-    <!-- Navegación principal -->
+    <!-- MENÚ PRINCIPAL -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Inicio</a>
-
-            <!-- Botón para menú móvil -->
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-                ☰
-            </button>
+            <button class="nav-toggle" id="navToggle">☰</button>
 
             <ul class="nav-menu" id="navMenu">
-                <!-- HTML básico -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">HTML básico</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/html_basico.html">Estructura HTML</a></li>
-                        <li><a href="paginas/productos.html">Tabla de productos</a></li>
-                        <li><a href="paginas/imagenes.html">Imágenes básicas</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="paginas/html_basico.html">HTML Básico</a></li>
 
-                <!-- Banco -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">Banco</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/banco_tabla.html">Tabla de movimientos</a></li>
-                        <li><a href="paginas/banco_miembros.html">Listado de clientes</a></li>
-                    </ul>
-                </li>
-
-                <!-- Galería -->
                 <li class="nav-item">
-                    <a href="paginas/galeria.html">Galería</a>
+                    <a href="paginas/banco_tabla.html">Banco Tabla</a>
                 </li>
-
-                <!-- Operaciones -->
                 <li class="nav-item">
-                    <a href="paginas/operaciones.html">Operaciones</a>
+                    <a href="paginas/banco_miembros.html">Banco Miembros</a>
                 </li>
 
-                <!-- Formularios -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">Formularios</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/matriculacion.html">Formulario de Matriculación</a></li>
-                        <li><a href="paginas/prueba.html">Formulario de Prueba</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="paginas/imagenes.html">Imágenes</a></li>
+                <li class="nav-item"><a href="paginas/galeria.html">Galería</a></li>
+                <li class="nav-item"><a href="paginas/productos.html">Productos</a></li>
+                <li class="nav-item"><a href="paginas/operaciones.html">Operaciones</a></li>
 
-                <!-- APIs -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">APIs</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/clima.html">Clima (OpenWeather)</a></li>
-                        <li><a href="paginas/paises.html">Países (REST Countries)</a></li>
-                        <li><a href="paginas/pokemon.html">Pokémon (PokéAPI)</a></li>
-                        <li><a href="paginas/rick_morty.html">Rick &amp; Morty API</a></li>
-                        <li><a href="paginas/criptomonedas.html">Criptomonedas (CoinGecko)</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="paginas/matriculacion.html">Matriculación</a></li>
+                <li class="nav-item"><a href="paginas/prueba.html">Prueba</a></li>
 
-                <!-- Multimedia -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">Multimedia</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/multimedia.html">Mapas</a></li>
-                        <li><a href="paginas/multimedia2.html">Videos YouTube</a></li>
-                        <li><a href="paginas/multimedia3.html">Videos MP4 y Audios</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="paginas/clima.html">Clima</a></li>
+                <li class="nav-item"><a href="paginas/paises.html">Países</a></li>
+                <li class="nav-item"><a href="paginas/pokemon.html">Pokémon</a></li>
+                <li class="nav-item"><a href="paginas/rick_morty.html">Rick & Morty</a></li>
+                <li class="nav-item"><a href="paginas/criptomonedas.html">Criptomonedas</a></li>
 
-                <!-- Menús personalizados -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">Menús</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/menu1.html">Menú 1</a></li>
-                        <li><a href="paginas/menu2.html">Menú 2</a></li>
-                        <li><a href="paginas/menu3.html">Menú 3</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="paginas/multimedia.html">Mapas</a></li>
+                <li class="nav-item"><a href="paginas/multimedia2.html">YouTube</a></li>
+                <li class="nav-item"><a href="paginas/multimedia3.html">Videos y Audios</a></li>
 
-                <!-- Red social -->
-                <li class="nav-item has-submenu">
-                    <button class="submenu-toggle">Red social</button>
-                    <ul class="submenu">
-                        <li><a href="paginas/redsocial.html">Red social multimedia</a></li>
-                        <li><a href="paginas/comentarios.html">Comentarios con likes</a></li>
-                        <li><a href="paginas/noticias.html">Noticias con likes</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="paginas/redsocial.html">Red Social</a></li>
+                <li class="nav-item"><a href="paginas/comentarios.html">Comentarios</a></li>
+                <li class="nav-item"><a href="paginas/noticias.html">Noticias</a></li>
+
+                <li class="nav-item"><a href="paginas/menu1.html">Menú 1</a></li>
+                <li class="nav-item"><a href="paginas/menu2.html">Menú 2</a></li>
+                <li class="nav-item"><a href="paginas/menu3.html">Menú 3</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Contenido principal -->
+    <!-- CONTENIDO -->
     <main class="main-content">
 
-        <!-- Sección de bienvenida interactiva -->
-        <section class="section bienvenida-section">
-            <h2>Bienvenido/a al Proyecto Integral</h2>
-            <p>
-                Completa tus datos para personalizar la experiencia. El sistema evaluará tu edad y mostrará un mensaje
-                indicando si eres mayor o menor de 20 años.
-            </p>
+        <!-- BIENVENIDA -->
+        <section class="bienvenida-section">
+            <h2>Bienvenida interactiva</h2>
 
             <form id="formBienvenida" class="form-bienvenida">
                 <div class="form-row">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre" required>
                 </div>
 
                 <div class="form-row">
-                    <label for="apellido">Apellido:</label>
-                    <input type="text" id="apellido" name="apellido" required placeholder="Ingresa tu apellido">
+                    <label>Apellido:</label>
+                    <input type="text" id="apellido" required>
                 </div>
 
                 <div class="form-row">
-                    <label for="edad">Edad:</label>
-                    <input type="number" id="edad" name="edad" required min="1" max="120" placeholder="Ingresa tu edad">
+                    <label>Edad:</label>
+                    <input type="number" id="edad" required>
                 </div>
 
-                <button type="submit" id="btnIngresar">Ingresar</button>
+                <button type="submit">Ingresar</button>
             </form>
 
-            <div id="resultadoBienvenida" class="resultado-bienvenida">
-                <!-- Aquí se mostrará el saludo personalizado y el mensaje de mayor/menor -->
-            </div>
+            <div id="resultadoBienvenida" class="resultado-bienvenida"></div>
         </section>
 
-        <!-- Sección descriptiva de todo el sitio -->
-        <section class="section descripcion-sitio">
-            <h2>Descripción general del sitio</h2>
+        <!-- DESCRIPCIÓN GENERAL -->
+        <section class="section">
+            <h2>Descripción del Sitio</h2>
+
             <p>
-                Este sitio reúne todos los trabajos desarrollados durante el curso, organizados por temas.
-                Desde conceptos básicos de HTML hasta consumo de APIs externas, pasando por formularios,
-                operaciones numéricas, contenido multimedia y una pequeña simulación de red social.
+                Este proyecto integra todos los contenidos trabajados durante el curso:
+                estructuras HTML, estilos con CSS, interacciones con JavaScript, formularios,
+                consumo de APIs, multimedia, simulación de red social y distintos tipos de menús.
             </p>
 
-            <div class="grid-descripcion">
-                <article class="card-descripcion">
-                    <h3>HTML básico</h3>
-                    <p>
-                        Páginas que muestran la estructura base de HTML, tablas de productos e inserción de imágenes,
-                        reforzando el uso correcto de etiquetas y organización del contenido.
-                    </p>
-                    <a href="paginas/html_basico.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>Banco</h3>
-                    <p>
-                        Páginas que simulan un pequeño banco con tablas de datos y miembros, aplicando estilos,
-                        tablas HTML y posibles operaciones con JavaScript.
-                    </p>
-                    <a href="paginas/banco_tabla.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>Galería</h3>
-                    <p>
-                        Una galería de imágenes con diseño atractivo, práctica de maquetación y organización visual
-                        del contenido multimedia.
-                    </p>
-                    <a href="paginas/galeria.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>Operaciones</h3>
-                    <p>
-                        Sección donde se realizan operaciones aritméticas utilizando JavaScript, capturando datos
-                        del usuario desde formularios.
-                    </p>
-                    <a href="paginas/operaciones.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>Formularios</h3>
-                    <p>
-                        Formularios de matriculación y prueba donde se validan datos básicos y se preparan envíos
-                        mediante JavaScript.
-                    </p>
-                    <a href="paginas/matriculacion.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>APIs</h3>
-                    <p>
-                        Páginas que consumen APIs públicas como OpenWeather, REST Countries, PokéAPI, Rick &amp; Morty
-                        y CoinGecko, mostrando datos dinámicos en el navegador.
-                    </p>
-                    <a href="paginas/clima.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>Multimedia</h3>
-                    <p>
-                        Secciones con mapas embebidos, videos de YouTube y reproducción de videos MP4 y audios locales,
-                        organizados por tipo de contenido.
-                    </p>
-                    <a href="paginas/multimedia.html" class="btn-card">Ver sección</a>
-                </article>
-
-                <article class="card-descripcion">
-                    <h3>Menús y Red social</h3>
-                    <p>
-                        Páginas con distintos estilos de menús personalizados y una sección de red social con publicaciones,
-                        comentarios, noticias y botones de "like".
-                    </p>
-                    <a href="paginas/redsocial.html" class="btn-card">Ver sección</a>
-                </article>
-            </div>
+            <ul>
+                <li>HTML Básico: estructura base</li>
+                <li>Banco Biz: tablas de datos</li>
+                <li>Galería: manejo de imágenes</li>
+                <li>Operaciones: cálculos con JavaScript</li>
+                <li>Formularios: matriculación y examen</li>
+                <li>APIs: clima, países, Pokémon, Rick & Morty y criptomonedas</li>
+                <li>Multimedia: mapas, YouTube, videos y audios</li>
+                <li>Red Social: publicaciones con likes</li>
+                <li>Menús Personalizados: 3 estilos diferentes</li>
+            </ul>
         </section>
+
     </main>
 
-    <!-- Pie de página -->
+    <!-- FOOTER -->
     <footer class="site-footer">
-        <p>&copy; <span id="yearFooter"></span> - Proyecto Integral Programación Web - Alumno/a: [Tu Nombre]</p>
+        <p>Proyecto Final - Programación Web</p>
     </footer>
 
-    <!-- Scripts -->
-    <!-- JS de bienvenida e interacción con la edad -->
-    <script src="js/bienvenida.js"></script>
-    <script src="js/edad.js"></script>
+    <!-- JS -->
+    <script src="statics/js/bienvenida.js"></script>
+
 </body>
 </html>
