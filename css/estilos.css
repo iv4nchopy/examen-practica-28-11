@@ -131,14 +131,14 @@ body {
 }
 
 /* =========================
-   BIENVENIDA
+   BIENVENIDA / FORMULARIOS
 ========================= */
-.bienvenida-section {
+.bienvenida-section,
+.form-bienvenida {
     background-color: #020617;
     padding: 25px;
     border-radius: 12px;
     border: 1px solid #2563eb;
-    text-align: center;
 }
 
 .form-bienvenida {
@@ -151,7 +151,6 @@ body {
     display: flex;
     flex-direction: column;
     margin-bottom: 12px;
-    text-align: left;
 }
 
 .form-row label {
@@ -159,7 +158,8 @@ body {
     font-size: 14px;
 }
 
-.form-row input {
+.form-row input,
+.form-row select {
     padding: 10px;
     border-radius: 6px;
     border: none;
@@ -187,7 +187,7 @@ button:hover {
 }
 
 /* =========================
-   DESCRIPCIÓN DEL SITIO
+   DESCRIPCIONES - CARDS
 ========================= */
 .grid-descripcion {
     display: grid;
@@ -196,15 +196,16 @@ button:hover {
 }
 
 .card-descripcion {
-    background-color: #020617;
+    background-color: rgba(2, 6, 23, 0.95);
     border: 1px solid #2563eb;
     padding: 20px;
     border-radius: 12px;
+    text-align: center;
 }
 
-.card-descripcion h3 {
-    margin-bottom: 10px;
-    color: #60a5fa;
+.card-descripcion img {
+    max-width: 100%;
+    border-radius: 8px;
 }
 
 .btn-card {
@@ -311,4 +312,42 @@ video, audio, iframe {
     .nav-item:hover .submenu {
         display: none;
     }
+}
+
+/* ====================================================
+   ✅ FONDO ESPECIAL PARA PAISES
+==================================================== */
+body.fondo-paises {
+    background-image: url("https://images.unsplash.com/photo-1621977717126-e29965156a27?q=80&w=1668&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.fondo-paises::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* ====================================================
+   ✅ FONDO ESPECIAL PARA POKÉMON
+==================================================== */
+body.fondo-pokemon {
+    background-image: url("https://wallpapers.com/images/high/pokemon-black-s6o2jsccwspmatcu.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.fondo-pokemon::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: -1;
 }
