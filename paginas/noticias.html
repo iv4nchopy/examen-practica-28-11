@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Noticias con Imágenes Reales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <h1>Noticias Tecnológicas</h1>
+        <p>Noticias reales con imágenes desde la web</p>
+    </header>
+
+    <!-- MENÚ -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a href="comentarios.html">Comentarios</a></li>
+                <li class="nav-item"><a href="redsocial.html">Red Social</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="main-content">
+
+        <!-- NOTICIA 1 -->
+        <div class="card-descripcion">
+            <h3>Nueva inteligencia artificial revoluciona el desarrollo web</h3>
+
+            <img 
+              src="https://images.unsplash.com/photo-1581093588401-22d933d7cbd0?q=80&w=1200&auto=format&fit=crop"
+              alt="Inteligencia Artificial">
+
+            <p>
+                Una nueva generación de inteligencia artificial permite desarrollar
+                aplicaciones web más rápidas, seguras y eficientes, reduciendo tiempos
+                de desarrollo en más de un 40%.
+            </p>
+
+            <button class="like-btn" onclick="like(1)">👍 Like <span id="like1">0</span></button>
+        </div>
+
+        <!-- NOTICIA 2 -->
+        <div class="card-descripcion">
+            <h3>Programación: una de las carreras más demandadas en 2025</h3>
+
+            <img 
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+              alt="Programación">
+
+            <p>
+                Empresas de todo el mundo buscan desarrolladores en áreas como
+                desarrollo web, aplicaciones móviles, bases de datos e inteligencia artificial.
+            </p>
+
+            <button class="like-btn" onclick="like(2)">👍 Like <span id="like2">0</span></button>
+        </div>
+
+        <!-- NOTICIA 3 -->
+        <div class="card-descripcion">
+            <h3>El crecimiento de las criptomonedas en la economía digital</h3>
+
+            <img 
+              src="https://images.unsplash.com/photo-1621416894569-83603bd3aaf2?q=80&w=1200&auto=format&fit=crop"
+              alt="Criptomonedas">
+
+            <p>
+                Las criptomonedas continúan expandiéndose como medio de inversión,
+                pago y reserva de valor, impulsadas por nuevas tecnologías blockchain.
+            </p>
+
+            <button class="like-btn" onclick="like(3)">👍 Like <span id="like3">0</span></button>
+        </div>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Noticias con Imágenes Reales</p>
+    </footer>
+
+    <!-- JS DE LIKES -->
+    <script>
+        function like(num) {
+            let span = document.getElementById("like" + num);
+            span.textContent = parseInt(span.textContent) + 1;
+        }
+    </script>
+
+</body>
+</html>
