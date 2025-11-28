@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Banco - Tabla de Movimientos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Banco</h1>
+        <p>Tabla de movimientos bancarios</p>
+    </header>
+
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="banco_tabla.html">Movimientos</a></li>
+                <li class="nav-item"><a href="banco_miembros.html">Miembros</a></li>
+                <li class="nav-item"><a href="productos.html">Productos</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <section class="section">
+            <h2>Listado de Movimientos</h2>
+            <p>Registro de ingresos y egresos simulados de una cuenta bancaria.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Concepto</th>
+                        <th>Monto (Gs)</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01/11/2025</td>
+                        <td>Depósito inicial</td>
+                        <td>1.200.000</td>
+                        <td>Ingreso</td>
+                    </tr>
+                    <tr>
+                        <td>03/11/2025</td>
+                        <td>Pago de servicios</td>
+                        <td>180.000</td>
+                        <td>Egreso</td>
+                    </tr>
+                    <tr>
+                        <td>06/11/2025</td>
+                        <td>Compra supermercado</td>
+                        <td>250.000</td>
+                        <td>Egreso</td>
+                    </tr>
+                    <tr>
+                        <td>10/11/2025</td>
+                        <td>Transferencia recibida</td>
+                        <td>950.000</td>
+                        <td>Ingreso</td>
+                    </tr>
+                    <tr>
+                        <td>14/11/2025</td>
+                        <td>Compra en línea</td>
+                        <td>320.000</td>
+                        <td>Egreso</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Banco (Tabla de Movimientos)</p>
+    </footer>
+
+    <!-- JS del menú -->
+    <script src="../statics/js/bienvenida.js"></script>
+
+</body>
+</html>
