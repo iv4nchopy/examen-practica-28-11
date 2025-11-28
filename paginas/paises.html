@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Países - REST Countries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+
+<!-- ✅ YA SE APLICÓ LA CLASE DEL FONDO -->
+<body class="fondo-paises">
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Países del Mundo</h1>
+        <p>Datos obtenidos desde la REST Countries API</p>
+    </header>
+
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="clima.html">Clima</a></li>
+                <li class="nav-item"><a href="paises.html">Países</a></li>
+                <li class="nav-item"><a href="pokemon.html">Pokémon</a></li>
+                <li class="nav-item"><a href="rick_morty.html">Rick & Morty</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <section class="section">
+            <h2>Listado de Países</h2>
+            <p>Presiona el botón para cargar algunos países del mundo.</p>
+
+            <button id="btnPaises">Cargar Países</button>
+
+            <div id="resultadoPaises" class="grid-descripcion" style="margin-top: 20px;"></div>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Países (REST Countries API)</p>
+    </footer>
+
+    <!-- JS del menú -->
+    <script src="../statics/js/bienvenida.js"></script>
+    <!-- JS de APIs -->
+    <script src="../statics/js/apis.js"></script>
+
+</body>
+</html>
