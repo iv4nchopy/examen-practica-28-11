@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba - Examen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Prueba de Conocimientos</h1>
+        <p>Evaluación básica de Programación Web</p>
+    </header>
+
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="matriculacion.html">Matriculación</a></li>
+                <li class="nav-item"><a href="prueba.html">Prueba</a></li>
+                <li class="nav-item"><a href="operaciones.html">Operaciones</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <section class="section">
+            <h2>Examen</h2>
+            <p>Responde todas las preguntas para finalizar el examen.</p>
+
+            <form id="formPrueba" class="form-bienvenida">
+
+                <div class="form-row">
+                    <label for="nombre">Nombre del alumno:</label>
+                    <input type="text" id="nombre" required>
+                </div>
+
+                <!-- PREGUNTA 1 -->
+                <div class="form-row">
+                    <label>1. ¿Cuál es el lenguaje de programación más usado?</label>
+                    <label><input type="radio" name="p1" value="python"> Python</label>
+                    <label><input type="radio" name="p1" value="java"> Java</label>
+                    <label><input type="radio" name="p1" value="cpp"> C++</label>
+                    <label><input type="radio" name="p1" value="ruby"> Ruby</label>
+                </div>
+
+                <!-- PREGUNTA 2 -->
+                <div class="form-row">
+                    <label>2. ¿El Hardware es la parte física del computador?</label>
+                    <label><input type="radio" name="p2" value="true"> Verdadero</label>
+                    <label><input type="radio" name="p2" value="false"> Falso</label>
+                </div>
+
+                <!-- PREGUNTA 3 -->
+                <div class="form-row">
+                    <label for="p3">3. ¿Qué es HTML?</label>
+                    <input type="text" id="p3" placeholder="Respuesta corta" required>
+                </div>
+
+                <!-- PREGUNTA 4 -->
+                <div class="form-row">
+                    <label>4. ¿Qué significa CPU?</label>
+                    <label><input type="radio" name="p4" value="cpu"> Central Processing Unit</label>
+                    <label><input t
