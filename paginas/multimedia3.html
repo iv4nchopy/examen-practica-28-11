@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Multimedia - Videos y Audios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/css/estilos.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Multimedia - Videos y Audios</h1>
+        <p>Reproducción de archivos multimedia locales</p>
+    </header>
+
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="multimedia.html">Mapas</a></li>
+                <li class="nav-item"><a href="multimedia2.html">YouTube</a></li>
+                <li class="nav-item"><a href="multimedia3.html">Videos y Audios</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- VIDEOS -->
+        <section class="section">
+            <h2>Videos MP4</h2>
+            <p>Videos cargados desde la carpeta <strong>statics/video</strong>.</p>
+
+            <video controls>
+                <source src="../statics/video/video1.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+
+            <video controls>
+                <source src="../statics/video/video2.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+
+            <video controls>
+                <source src="../statics/video/video3.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+        </section>
+
+        <!-- AUDIOS -->
+        <section class="section">
+            <h2>Audios MP3</h2>
+            <p>Audios cargados desde la carpeta <strong>statics/audio</strong>.</p>
+
+            <audio controls>
+                <source src="../statics/audio/audio1.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+
+            <audio controls>
+                <source src="../statics/audio/audio2.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+
+            <audio controls>
+                <source src="../statics/audio/audio3.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Multimedia (Videos y Audios)</p>
+    </footer>
+
+    <!-- JS del menú -->
+    <script src="../statics/js/bienvenida.js"></script>
+
+</body>
+</html>
