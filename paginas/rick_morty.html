@@ -1,65 +1,43 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Rick & Morty - API</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/estilos.css">
+// ---------- RICK & MORTY ----------
+const inputRick = document.getElementById("rickInput");
+const btnBuscarRick = document.getElementById("btnBuscarRick");
+const resultadoRick = document.getElementById("resultadoRick");
 
-</head>
-<body>
+if (inputRick && btnBuscarRick && resultadoRick) {
+    btnBuscarRick.addEventListener("click", async () => {
+        const nombrePersonaje = inputRick.value.trim();
 
-    <!-- Header -->
-    <header class="site-header">
-        <h1>Rick & Morty</h1>
-        <p>Personajes obtenidos desde la API de Rick & Morty</p>
-    </header>
+        if (!nombrePersonaje) {
+            resultadoRick.innerHTML = "❌ Ingrese el nombre de un personaje.";
+            return;
+        }
 
-    <!-- Menú principal -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo">Inicio</a>
+        resultadoRick.innerHTML = "🔎 Buscando personaje...";
 
-            <button class="nav-toggle" id="navToggle">☰</button>
+        try {
+            const resp = await fetch(
+                `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(nombrePersonaje)}`
+            );
 
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="pokemon.html">Pokémon</a></li>
-                <li class="nav-item"><a href="rick_morty.html">Rick & Morty</a></li>
-                <li class="nav-item"><a href="criptomonedas.html">Criptomonedas</a></li>
-                <li class="nav-item"><a href="paises.html">Países</a></li>
-                <li class="nav-item"><a href="../index.html">Volver</a></li>
-            </ul>
-        </div>
-    </nav>
+            if (!resp.ok) {
+                resultadoRick.innerHTML = "❌ Personaje no encontrado.";
+                return;
+            }
 
-    <!-- Contenido principal -->
-    <main class="main-content">
+            const data = await resp.json();
+            const personaje = data.results[0];
 
-        <section class="section">
-            <h2>Personajes</h2>
-            <p>Presiona el botón para cargar personajes de la serie.</p>
-
-            <button id="btnRick">Cargar Personajes</button>
-
-            <!-- ✅ Contenedor con fondo sólido para que se vea bien sobre cualquier fondo -->
-            <div id="resultadoRick" class="grid-descripcion" style="margin-top: 20px;"></div>
-        </section>
-
-        <section class="section">
-            <a href="../index.html" class="btn-card">Volver al Inicio</a>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <p>Proyecto Programación Web - Rick & Morty API</p>
-    </footer>
-
-    <!-- JS del menú -->
-    <script src="../js/bienvenida.js"></script>
-    <!-- JS de APIs -->
-    <script src="../js/apis.js"></script>
-
-</body>
-</html>
+            resultadoRick.innerHTML = `
+                <div class="card-descripcion">
+                    <h3>${personaje.name}</h3>
+                    <img src="${personaje.image}" alt="${personaje.name}" class="rick-img">
+                    <p><strong>Estado:</strong> ${personaje.status}</p>
+                    <p><strong>Especie:</strong> ${personaje.species}</p>
+                </div>
+            `;
+        } catch (error) {
+            console.error(error);
+            resultadoRick.innerHTML = "⚠️ Error al consultar personaje.";
+        }
+    });
+}
