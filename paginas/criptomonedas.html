@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
-<body>
+<body class="fondo-cripto">
 
     <!-- Header -->
     <header class="site-header">
@@ -37,12 +37,16 @@
     <main class="main-content">
 
         <section class="section">
-            <h2>Top Criptomonedas</h2>
-            <p>Presiona el botón para cargar las principales criptomonedas del mercado.</p>
+            <h2>Buscar Criptomoneda</h2>
+            <p>Escribe el nombre de la criptomoneda para ver su información.</p>
 
-            <button id="btnCripto">Cargar Criptomonedas</button>
+            <!-- ✅ CAMPO DE BÚSQUEDA -->
+            <div class="form-row">
+                <input type="text" id="criptoInput" placeholder="Ej: bitcoin, ethereum, solana">
+                <button id="btnBuscarCripto">Buscar</button>
+            </div>
 
-            <!-- ✅ Contenedor con fondo sólido para máxima legibilidad -->
+            <!-- ✅ RESULTADO -->
             <div id="resultadoCripto" class="grid-descripcion" style="margin-top: 20px;"></div>
         </section>
 
