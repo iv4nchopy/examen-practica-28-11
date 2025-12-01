@@ -1,172 +1,222 @@
-// ================================
+// =====================================
 // CONFIGURACIÓN GENERAL
-// ================================
+// =====================================
 const OPENWEATHER_API_KEY = "4c18b2eb51944a9b42d33765242e6dc9";
 
-// ================================
-// 1️⃣ CLIMA - OpenWeather
-// Página: clima.html
-// ================================
 document.addEventListener("DOMContentLoaded", () => {
 
-    const formClima = document.getElementById("formClima");
+  // =====================================
+  // 1️⃣ CLIMA - OpenWeather (clima.html)
+  // =====================================
+  const formClima = document.getElementById("formClima");
 
-    if (formClima) {
-        formClima.addEventListener("submit", async (e) => {
-            e.preventDefault();
+  if (formClima) {
+    formClima.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-            const ciudad = document.getElementById("ciudad").value.trim();
-            const resultado = document.getElementById("resultadoClima");
+      const ciudad = document.getElementById("ciudad").value.trim();
+      const resultado = document.getElementById("resultadoClima");
 
-            if (ciudad === "") {
-                resultado.innerHTML = "❌ Ingrese una ciudad.";
-                return;
-            }
+      if (!ciudad) {
+        resultado.innerHTML = "❌ Ingrese una ciudad.";
+        return;
+      }
 
-            try {
-                const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=es`;
-                const response = await fetch(url);
-                const data = await response.json();
+      resultado.innerHTML = "🔎 Buscando clima...";
 
-                if (data.cod !== 200) {
-                    resultado.innerHTML = "❌ Ciudad no encontrada.";
-                    return;
-                }
+      try {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(ciudad)}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=es`;
+        const response = await fetch(url);
+        const data = await response.json();
 
-                resultado.innerHTML = `
-                    <h3>${data.name}</h3>
-                    <p>🌡 Temperatura: ${data.main.temp} °C</p>
-                    <p>💧 Humedad: ${data.main.humidity}%</p>
-                    <p>🌬 Viento: ${data.wind.speed} m/s</p>
-                    <p>🌥 Clima: ${data.weather[0].description}</p>
-                `;
-            } catch (error) {
-                resultado.innerHTML = "❌ Error al consultar el clima.";
-            }
-        });
-    }
+        if (data.cod !== 200) {
+          resultado.innerHTML = "❌ Ciudad no encontrada.";
+          return;
+        }
 
-    // ================================
-    // 2️⃣ PAÍSES - REST COUNTRIES
-    // Página: paises.html
-    // ================================
-    const btnPaises = document.getElementById("btnPaises");
+        resultado.innerHTML = `
+          <div class="card-descripcion">
+            <h3>${data.name}</h3>
+            <p>🌡 Temperatura: ${data.main.temp} °C</p>
+            <p>💧 Humedad: ${data.main.humidity}%</p>
+            <p>🌬 Viento: ${data.wind.speed} m/s</p>
+            <p>🌥 Clima: ${data.weather[0].description}</p>
+          </div>
+        `;
+      } catch (error) {
+        resultado.innerHTML = "⚠️ Error al consultar el clima.";
+      }
+    });
+  }
 
-    if (btnPaises) {
-        btnPaises.addEventListener("click", async () => {
-            const contenedor = document.getElementById("resultadoPaises");
+  // =====================================
+  // 2️⃣ PAÍSES - REST Countries (paises.html)
+  // =====================================
+  const inputPais = document.getElementById("paisInput");
+  const btnBuscarPais = document.getElementById("btnBuscarPais");
+  const resultadoPais = document.getElementById("resultadoPais");
 
-            try {
-                const res = await fetch("https://restcountries.com/v3.1/all");
-                const data = await res.json();
+  if (inputPais && btnBuscarPais && resultadoPais) {
+    btnBuscarPais.addEventListener("click", async () => {
+      const nombrePais = inputPais.value.trim();
 
-                contenedor.innerHTML = "";
+      if (!nombrePais) {
+        resultadoPais.innerHTML = "❌ Ingrese el nombre de un país.";
+        return;
+      }
 
-                data.slice(0, 12).forEach(pais => {
-                    contenedor.innerHTML += `
-                        <div class="card-descripcion">
-                            <h3>${pais.name.common}</h3>
-                            <img src="${pais.flags.png}" width="100">
-                            <p>Capital: ${pais.capital ? pais.capital[0] : "N/A"}</p>
-                            <p>Población: ${pais.population}</p>
-                        </div>
-                    `;
-                });
-            } catch (error) {
-                contenedor.innerHTML = "❌ Error al cargar países.";
-            }
-        });
-    }
+      resultadoPais.innerHTML = "🔎 Buscando país...";
 
-    // ================================
-    // 3️⃣ POKÉMON - PokéAPI
-    // Página: pokemon.html
-    // ================================
-    const btnPokemon = document.getElementById("btnPokemon");
+      try {
+        const resp = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(nombrePais)}`);
+        if (!resp.ok) {
+          resultadoPais.innerHTML = "❌ País no encontrado.";
+          return;
+        }
 
-    if (btnPokemon) {
-        btnPokemon.addEventListener("click", async () => {
-            const resultado = document.getElementById("resultadoPokemon");
-            const random = Math.floor(Math.random() * 151) + 1;
+        const data = await resp.json();
+        const pais = data[0];
 
-            try {
-                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${random}`);
-                const data = await res.json();
+        resultadoPais.innerHTML = `
+          <div class="card-descripcion">
+            <h3>${pais.name.common}</h3>
+            <img src="${pais.flags.svg}" alt="Bandera de ${pais.name.common}" style="width:150px;">
+            <p><strong>Capital:</strong> ${pais.capital ? pais.capital[0] : "No disponible"}</p>
+            <p><strong>Región:</strong> ${pais.region}</p>
+            <p><strong>Población:</strong> ${pais.population.toLocaleString()}</p>
+          </div>
+        `;
+      } catch (error) {
+        resultadoPais.innerHTML = "⚠️ Error al consultar el país.";
+      }
+    });
+  }
 
-                resultado.innerHTML = `
-                    <h3>${data.name.toUpperCase()}</h3>
-                    <img src="${data.sprites.front_default}">
-                    <p>Altura: ${data.height}</p>
-                    <p>Peso: ${data.weight}</p>
-                `;
-            } catch (error) {
-                resultado.innerHTML = "❌ Error al cargar Pokémon.";
-            }
-        });
-    }
+  // =====================================
+  // 3️⃣ POKÉMON - PokéAPI (pokemon.html)
+  // =====================================
+  const inputPokemon = document.getElementById("pokemonInput");
+  const btnBuscarPokemon = document.getElementById("btnBuscarPokemon");
+  const resultadoPokemon = document.getElementById("resultadoPokemon");
 
-    // ================================
-    // 4️⃣ RICK & MORTY API
-    // Página: rick_morty.html
-    // ================================
-    const btnRick = document.getElementById("btnRick");
+  if (inputPokemon && btnBuscarPokemon && resultadoPokemon) {
+    btnBuscarPokemon.addEventListener("click", async () => {
+      const nombrePokemon = inputPokemon.value.trim().toLowerCase();
 
-    if (btnRick) {
-        btnRick.addEventListener("click", async () => {
-            const contenedor = document.getElementById("resultadoRick");
+      if (!nombrePokemon) {
+        resultadoPokemon.innerHTML = "❌ Ingrese el nombre de un Pokémon.";
+        return;
+      }
 
-            try {
-                const res = await fetch("https://rickandmortyapi.com/api/character");
-                const data = await res.json();
+      resultadoPokemon.innerHTML = "🔎 Buscando Pokémon...";
 
-                contenedor.innerHTML = "";
+      try {
+        const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(nombrePokemon)}`);
+        if (!resp.ok) {
+          resultadoPokemon.innerHTML = "❌ Pokémon no encontrado.";
+          return;
+        }
 
-                data.results.slice(0, 6).forEach(per => {
-                    contenedor.innerHTML += `
-                        <div class="card-descripcion">
-                            <img src="${per.image}" width="120">
-                            <h3>${per.name}</h3>
-                            <p>Estado: ${per.status}</p>
-                            <p>Especie: ${per.species}</p>
-                        </div>
-                    `;
-                });
-            } catch (error) {
-                contenedor.innerHTML = "❌ Error al cargar personajes.";
-            }
-        });
-    }
+        const data = await resp.json();
 
-    // ================================
-    // 5️⃣ CRIPTOMONEDAS - CoinGecko
-    // Página: criptomonedas.html
-    // ================================
-    const btnCripto = document.getElementById("btnCripto");
+        resultadoPokemon.innerHTML = `
+          <div class="card-descripcion">
+            <h3>${data.name.toUpperCase()}</h3>
+            <img src="${data.sprites.other['official-artwork'].front_default}" 
+                 alt="${data.name}" class="pokemon-img">
+            <p><strong>Altura:</strong> ${data.height}</p>
+            <p><strong>Peso:</strong> ${data.weight}</p>
+            <p><strong>Tipo:</strong> ${data.types.map(t => t.type.name).join(", ")}</p>
+          </div>
+        `;
+      } catch (error) {
+        resultadoPokemon.innerHTML = "⚠️ Error al consultar el Pokémon.";
+      }
+    });
+  }
 
-    if (btnCripto) {
-        btnCripto.addEventListener("click", async () => {
-            const contenedor = document.getElementById("resultadoCripto");
+  // =====================================
+  // 4️⃣ RICK & MORTY (rick_morty.html)
+  // =====================================
+  const inputRick = document.getElementById("rickInput");
+  const btnBuscarRick = document.getElementById("btnBuscarRick");
+  const resultadoRick = document.getElementById("resultadoRick");
 
-            try {
-                const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
-                const data = await res.json();
+  if (inputRick && btnBuscarRick && resultadoRick) {
+    btnBuscarRick.addEventListener("click", async () => {
+      const nombrePersonaje = inputRick.value.trim();
 
-                contenedor.innerHTML = "";
+      if (!nombrePersonaje) {
+        resultadoRick.innerHTML = "❌ Ingrese el nombre de un personaje.";
+        return;
+      }
 
-                data.slice(0, 10).forEach(moneda => {
-                    contenedor.innerHTML += `
-                        <div class="card-descripcion">
-                            <img src="${moneda.image}" width="50">
-                            <h3>${moneda.name}</h3>
-                            <p>Precio: $${moneda.current_price}</p>
-                            <p>Ranking: ${moneda.market_cap_rank}</p>
-                        </div>
-                    `;
-                });
-            } catch (error) {
-                contenedor.innerHTML = "❌ Error al cargar criptomonedas.";
-            }
-        });
-    }
+      resultadoRick.innerHTML = "🔎 Buscando personaje...";
+
+      try {
+        const resp = await fetch(`https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(nombrePersonaje)}`);
+        if (!resp.ok) {
+          resultadoRick.innerHTML = "❌ Personaje no encontrado.";
+          return;
+        }
+
+        const data = await resp.json();
+        const personaje = data.results[0];
+
+        resultadoRick.innerHTML = `
+          <div class="card-descripcion">
+            <h3>${personaje.name}</h3>
+            <img src="${personaje.image}" alt="${personaje.name}" class="rick-img">
+            <p><strong>Estado:</strong> ${personaje.status}</p>
+            <p><strong>Especie:</strong> ${personaje.species}</p>
+          </div>
+        `;
+      } catch (error) {
+        resultadoRick.innerHTML = "⚠️ Error al consultar personaje.";
+      }
+    });
+  }
+
+  // =====================================
+  // 5️⃣ CRIPTOMONEDAS - CoinGecko (criptomonedas.html)
+  // =====================================
+  const inputCripto = document.getElementById("criptoInput");
+  const btnBuscarCripto = document.getElementById("btnBuscarCripto");
+  const resultadoCripto = document.getElementById("resultadoCripto");
+
+  if (inputCripto && btnBuscarCripto && resultadoCripto) {
+    btnBuscarCripto.addEventListener("click", async () => {
+      const nombreCripto = inputCripto.value.trim().toLowerCase();
+
+      if (!nombreCripto) {
+        resultadoCripto.innerHTML = "❌ Ingrese el nombre de una criptomoneda.";
+        return;
+      }
+
+      resultadoCripto.innerHTML = "🔎 Buscando criptomoneda...";
+
+      try {
+        const resp = await fetch(`https://api.coingecko.com/api/v3/coins/${encodeURIComponent(nombreCripto)}`);
+        if (!resp.ok) {
+          resultadoCripto.innerHTML = "❌ Criptomoneda no encontrada.";
+          return;
+        }
+
+        const data = await resp.json();
+
+        resultadoCripto.innerHTML = `
+          <div class="card-descripcion">
+            <h3>${data.name}</h3>
+            <img src="${data.image.large}" alt="${data.name}" style="width:120px; margin:10px auto; display:block;">
+            <p><strong>Precio USD:</strong> $${data.market_data.current_price.usd}</p>
+            <p><strong>Capitalización:</strong> $${data.market_data.market_cap.usd.toLocaleString()}</p>
+            <p><strong>Ranking:</strong> #${data.market_cap_rank}</p>
+          </div>
+        `;
+      } catch (error) {
+        resultadoCripto.innerHTML = "⚠️ Error al consultar la criptomoneda.";
+      }
+    });
+  }
 
 });
