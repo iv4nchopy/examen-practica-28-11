@@ -426,3 +426,20 @@ body.fondo-rick::before {
     max-width: 200px;
   }
 }
+/* =========================
+   ✅ MEJOR ESPACIADO DEL MENÚ EN PC
+========================= */
+@media (min-width: 901px) {
+
+  .nav-container {
+    gap: 40px; /* separa el logo del menú */
+  }
+
+  .nav-menu {
+    gap: 26px; /* separa mejor cada opción */
+  }
+
+  .nav-item a {
+    padding: 6px 10px; /* más aire alrededor del texto */
+  }
+}
