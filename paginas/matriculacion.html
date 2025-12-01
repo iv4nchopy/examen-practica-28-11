@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Formulario de Matriculación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ✅ CSS CORRECTO DESDE /paginas -->
     <link rel="stylesheet" href="../css/estilos.css">
-
 </head>
 <body>
 
@@ -38,6 +38,7 @@
             <h2>Datos del Estudiante</h2>
             <p>Complete el siguiente formulario para registrarse.</p>
 
+            <!-- ✅ FORMULARIO CON IDS CORRECTOS -->
             <form id="formMatriculacion" class="form-bienvenida">
 
                 <div class="form-row">
@@ -74,6 +75,7 @@
                 <button type="submit">Registrar Matrícula</button>
             </form>
 
+            <!-- ✅ MENSAJE DE RESULTADO -->
             <div id="resultadoMatriculacion" class="resultado-bienvenida"></div>
         </section>
 
@@ -88,9 +90,13 @@
         <p>Proyecto Programación Web - Formulario de Matriculación</p>
     </footer>
 
-    <!-- JS del menú -->
+    <!-- ✅ JS DEL MENÚ -->
     <script src="../js/bienvenida.js"></script>
-    <!-- JS del formulario -->
+
+    <!-- ✅ LIBRERÍA EMAILJS (OBLIGATORIA) -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <!-- ✅ JS DE MATRÍCULA (EL QUE TE CORREGÍ CON TU PUBLIC KEY) -->
     <script src="../js/formulario_matriculacion.js"></script>
 
 </body>
