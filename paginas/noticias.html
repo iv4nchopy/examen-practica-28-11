@@ -5,7 +5,6 @@
     <title>Noticias con Imágenes Reales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilos.css">
-
 </head>
 <body>
 
@@ -47,7 +46,9 @@
                 de desarrollo en más de un 40%.
             </p>
 
-            <button class="like-btn" onclick="like(1)">👍 Like <span id="like1">0</span></button>
+            <button class="like-btn" onclick="like(1)">
+                👍 Like <span id="like1">0</span>
+            </button>
         </div>
 
         <!-- NOTICIA 2 -->
@@ -63,7 +64,9 @@
                 desarrollo web, aplicaciones móviles, bases de datos e inteligencia artificial.
             </p>
 
-            <button class="like-btn" onclick="like(2)">👍 Like <span id="like2">0</span></button>
+            <button class="like-btn" onclick="like(2)">
+                👍 Like <span id="like2">0</span>
+            </button>
         </div>
 
         <!-- NOTICIA 3 -->
@@ -79,7 +82,9 @@
                 pago y reserva de valor, impulsadas por nuevas tecnologías blockchain.
             </p>
 
-            <button class="like-btn" onclick="like(3)">👍 Like <span id="like3">0</span></button>
+            <button class="like-btn" onclick="like(3)">
+                👍 Like <span id="like3">0</span>
+            </button>
         </div>
 
         <section class="section">
@@ -93,11 +98,22 @@
         <p>Proyecto Programación Web - Noticias con Imágenes Reales</p>
     </footer>
 
-    <!-- JS DE LIKES -->
+    <!-- ✅ JS DE LIKES CON LOCALSTORAGE -->
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            for (let i = 1; i <= 3; i++) {
+                const likesGuardados = localStorage.getItem("like" + i);
+                if (likesGuardados) {
+                    document.getElementById("like" + i).textContent = likesGuardados;
+                }
+            }
+        });
+
         function like(num) {
             let span = document.getElementById("like" + num);
-            span.textContent = parseInt(span.textContent) + 1;
+            let nuevoLike = parseInt(span.textContent) + 1;
+            span.textContent = nuevoLike;
+            localStorage.setItem("like" + num, nuevoLike);
         }
     </script>
 
