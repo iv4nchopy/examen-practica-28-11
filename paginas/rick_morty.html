@@ -4,40 +4,46 @@ const btnBuscarRick = document.getElementById("btnBuscarRick");
 const resultadoRick = document.getElementById("resultadoRick");
 
 if (inputRick && btnBuscarRick && resultadoRick) {
-    btnBuscarRick.addEventListener("click", async () => {
-        const nombrePersonaje = inputRick.value.trim();
+  btnBuscarRick.addEventListener("click", async () => {
+    const nombrePersonaje = inputRick.value.trim().toLowerCase();
 
-        if (!nombrePersonaje) {
-            resultadoRick.innerHTML = "❌ Ingrese el nombre de un personaje.";
-            return;
-        }
+    if (!nombrePersonaje) {
+      resultadoRick.innerHTML = "❌ Ingrese el nombre de un personaje.";
+      return;
+    }
 
-        resultadoRick.innerHTML = "🔎 Buscando personaje...";
+    resultadoRick.innerHTML = "🔎 Buscando personaje...";
 
-        try {
-            const resp = await fetch(
-                `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(nombrePersonaje)}`
-            );
+    try {
+      const resp = await fetch(
+        `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(nombrePersonaje)}`
+      );
 
-            if (!resp.ok) {
-                resultadoRick.innerHTML = "❌ Personaje no encontrado.";
-                return;
-            }
+      if (!resp.ok) {
+        resultadoRick.innerHTML = "❌ Personaje no encontrado.";
+        return;
+      }
 
-            const data = await resp.json();
-            const personaje = data.results[0];
+      const data = await resp.json();
 
-            resultadoRick.innerHTML = `
-                <div class="card-descripcion">
-                    <h3>${personaje.name}</h3>
-                    <img src="${personaje.image}" alt="${personaje.name}" class="rick-img">
-                    <p><strong>Estado:</strong> ${personaje.status}</p>
-                    <p><strong>Especie:</strong> ${personaje.species}</p>
-                </div>
-            `;
-        } catch (error) {
-            console.error(error);
-            resultadoRick.innerHTML = "⚠️ Error al consultar personaje.";
-        }
-    });
+      if (!data.results || data.results.length === 0) {
+        resultadoRick.innerHTML = "❌ No se encontraron resultados.";
+        return;
+      }
+
+      const personaje = data.results[0];
+
+      resultadoRick.innerHTML = `
+        <div class="card-descripcion">
+          <h3>${personaje.name}</h3>
+          <img src="${personaje.image}" alt="${personaje.name}" class="rick-img">
+          <p><strong>Estado:</strong> ${personaje.status}</p>
+          <p><strong>Especie:</strong> ${personaje.species}</p>
+        </div>
+      `;
+    } catch (error) {
+      console.error(error);
+      resultadoRick.innerHTML = "⚠️ Error al consultar personaje.";
+    }
+  });
 }
