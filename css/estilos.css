@@ -351,3 +351,78 @@ body.fondo-pokemon::before {
     background: rgba(0, 0, 0, 0.65);
     z-index: -1;
 }
+
+/* ====================================================
+   ✅ FONDO ESPECIAL PARA CRIPTOMONEDAS
+==================================================== */
+body.fondo-cripto {
+    background-image: url("https://wallpapers.com/images/high/4k-bitcoin-68x370ntp82lo3vj.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.fondo-cripto::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.60);
+    z-index: -1;
+}
+
+/* ====================================================
+   ✅ FONDO ESPECIAL PARA RICK & MORTY
+==================================================== */
+body.fondo-rick {
+    background-image: url("https://wallpapers.com/images/high/rick-and-morty-macbook-rxnm5o8mzyibtc09.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.fondo-rick::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.60);
+    z-index: -1;
+}
+
+/* ====================================================
+   ✅ IMAGEN POKÉMON RESPONSIVE
+==================================================== */
+.pokemon-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .pokemon-img {
+    max-width: 220px;
+  }
+}
+
+/* ====================================================
+   ✅ IMAGEN RICK & MORTY RESPONSIVE
+==================================================== */
+.rick-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@media (max-width: 600px) {
+  .rick-img {
+    max-width: 200px;
+  }
+}
