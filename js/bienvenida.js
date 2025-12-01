@@ -1,15 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+  /* ========================
+     ✅ MENÚ RESPONSIVO
+  ========================= */
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+  }
+
+  /* ========================
+     ✅ BIENVENIDA INDEX
+  ========================= */
   const form = document.getElementById("formBienvenida");
   const resultado = document.getElementById("resultadoBienvenida");
 
   if (!form || !resultado) return;
 
-  // ✅ RESTAURAR DATOS GUARDADOS
+  // Restaurar datos guardados
   const datosGuardados = localStorage.getItem("datosUsuario");
   if (datosGuardados) {
     const datos = JSON.parse(datosGuardados);
-    const estadoEdad = datos.edad > 20 ? "✅ Es mayor de 20 años." : "⚠️ Es menor de 20 años.";
+    const estadoEdad = datos.edad > 20
+      ? "✅ Es mayor de 20 años."
+      : "⚠️ Es menor de 20 años.";
 
     resultado.innerHTML = `
       <strong>Bienvenido:</strong> ${datos.nombre} ${datos.apellido}<br>
@@ -18,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  // ✅ EVENTO DEL BOTÓN INGRESAR
+  // Evento submit
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -36,16 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
       ? "✅ Es mayor de 20 años."
       : "⚠️ Es menor de 20 años.";
 
-    const datosUsuario = {
-      nombre,
-      apellido,
-      edad
-    };
+    const datosUsuario = { nombre, apellido, edad };
 
-    // ✅ GUARDAR EN LOCALSTORAGE
     localStorage.setItem("datosUsuario", JSON.stringify(datosUsuario));
 
-    // ✅ MOSTRAR MENSAJE
     resultado.innerHTML = `
       <strong>Bienvenido:</strong> ${nombre} ${apellido}<br>
       <strong>Edad:</strong> ${edad}<br>
