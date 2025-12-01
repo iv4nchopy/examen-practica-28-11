@@ -1,49 +1,71 @@
-// ---------- RICK & MORTY ----------
-const inputRick = document.getElementById("rickInput");
-const btnBuscarRick = document.getElementById("btnBuscarRick");
-const resultadoRick = document.getElementById("resultadoRick");
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Rick & Morty - API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
 
-if (inputRick && btnBuscarRick && resultadoRick) {
-  btnBuscarRick.addEventListener("click", async () => {
-    const nombrePersonaje = inputRick.value.trim().toLowerCase();
+<!-- ✅ FONDO RICK ACTIVADO -->
+<body class="fondo-rick">
 
-    if (!nombrePersonaje) {
-      resultadoRick.innerHTML = "❌ Ingrese el nombre de un personaje.";
-      return;
-    }
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Rick & Morty</h1>
+        <p>Búsqueda de personajes mediante la API de Rick & Morty</p>
+    </header>
 
-    resultadoRick.innerHTML = "🔎 Buscando personaje...";
+    <!-- Menú principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Inicio</a>
 
-    try {
-      const resp = await fetch(
-        `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(nombrePersonaje)}`
-      );
+            <button class="nav-toggle" id="navToggle">☰</button>
 
-      if (!resp.ok) {
-        resultadoRick.innerHTML = "❌ Personaje no encontrado.";
-        return;
-      }
-
-      const data = await resp.json();
-
-      if (!data.results || data.results.length === 0) {
-        resultadoRick.innerHTML = "❌ No se encontraron resultados.";
-        return;
-      }
-
-      const personaje = data.results[0];
-
-      resultadoRick.innerHTML = `
-        <div class="card-descripcion">
-          <h3>${personaje.name}</h3>
-          <img src="${personaje.image}" alt="${personaje.name}" class="rick-img">
-          <p><strong>Estado:</strong> ${personaje.status}</p>
-          <p><strong>Especie:</strong> ${personaje.species}</p>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="pokemon.html">Pokémon</a></li>
+                <li class="nav-item"><a href="rick_morty.html">Rick & Morty</a></li>
+                <li class="nav-item"><a href="criptomonedas.html">Criptomonedas</a></li>
+                <li class="nav-item"><a href="paises.html">Países</a></li>
+                <li class="nav-item"><a href="../index.html">Volver</a></li>
+            </ul>
         </div>
-      `;
-    } catch (error) {
-      console.error(error);
-      resultadoRick.innerHTML = "⚠️ Error al consultar personaje.";
-    }
-  });
-}
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <section class="section">
+            <h2>Buscar Personaje</h2>
+            <p>Escribe el nombre de un personaje (Ej: Rick, Morty, Summer).</p>
+
+            <!-- ✅ BUSCADOR -->
+            <div class="form-row">
+                <input type="text" id="rickInput" placeholder="Nombre del personaje">
+                <button id="btnBuscarRick">Buscar</button>
+            </div>
+
+            <!-- ✅ RESULTADO -->
+            <div id="resultadoRick" style="margin-top: 20px;"></div>
+        </section>
+
+        <section class="section">
+            <a href="../index.html" class="btn-card">Volver al Inicio</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Proyecto Programación Web - Rick & Morty API</p>
+    </footer>
+
+    <!-- JS del menú -->
+    <script src="../js/bienvenida.js"></script>
+
+    <!-- ✅ JS DE API (el que ya corregimos) -->
+    <script src="../js/apis.js"></script>
+
+</body>
+</html>
