@@ -1,41 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.getElementById("formBienvenida");
-    const resultado = document.getElementById("resultadoBienvenida");
+  const form = document.getElementById("formBienvenida");
+  const resultado = document.getElementById("resultadoBienvenida");
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
+  if (!form || !resultado) return;
 
-        const nombre = document.getElementById("nombre").value.trim();
-        const apellido = document.getElementById("apellido").value.trim();
-        const edad = document.getElementById("edad").value.trim();
+  // ✅ RESTAURAR DATOS GUARDADOS
+  const datosGuardados = localStorage.getItem("datosUsuario");
+  if (datosGuardados) {
+    const datos = JSON.parse(datosGuardados);
+    const estadoEdad = datos.edad > 20 ? "✅ Es mayor de 20 años." : "⚠️ Es menor de 20 años.";
 
-        if (nombre === "" || apellido === "" || edad === "") {
-            resultado.innerHTML = "Por favor complete todos los campos.";
-            resultado.style.color = "red";
-            return;
-        }
+    resultado.innerHTML = `
+      <strong>Bienvenido:</strong> ${datos.nombre} ${datos.apellido}<br>
+      <strong>Edad:</strong> ${datos.edad}<br>
+      ${estadoEdad}
+    `;
+  }
 
-        const mensajeEdad = evaluarEdad(parseInt(edad));
+  // ✅ EVENTO DEL BOTÓN INGRESAR
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        resultado.innerHTML = `
-            <p>👋 Bienvenido/a <strong>${nombre} ${apellido}</strong></p>
-            <p>Tienes <strong>${edad}</strong> años</p>
-            <p>${mensajeEdad}</p>
-        `;
-        resultado.style.color = "#22c55e";
-    });
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellido = document.getElementById("apellido").value.trim();
+    const edad = parseInt(document.getElementById("edad").value);
 
-    // -------------------------
-    // MENÚ RESPONSIVO
-    // -------------------------
-    const navToggle = document.getElementById("navToggle");
-    const navMenu = document.getElementById("navMenu");
-
-    if (navToggle) {
-        navToggle.addEventListener("click", function () {
-            navMenu.classList.toggle("active");
-        });
+    if (!nombre || !apellido || isNaN(edad)) {
+      resultado.innerHTML = "❌ Complete todos los campos correctamente.";
+      resultado.style.color = "red";
+      return;
     }
+
+    const estadoEdad = edad > 20
+      ? "✅ Es mayor de 20 años."
+      : "⚠️ Es menor de 20 años.";
+
+    const datosUsuario = {
+      nombre,
+      apellido,
+      edad
+    };
+
+    // ✅ GUARDAR EN LOCALSTORAGE
+    localStorage.setItem("datosUsuario", JSON.stringify(datosUsuario));
+
+    // ✅ MOSTRAR MENSAJE
+    resultado.innerHTML = `
+      <strong>Bienvenido:</strong> ${nombre} ${apellido}<br>
+      <strong>Edad:</strong> ${edad}<br>
+      ${estadoEdad}
+    `;
+    resultado.style.color = "#22c55e";
+
+    form.reset();
+  });
 
 });
