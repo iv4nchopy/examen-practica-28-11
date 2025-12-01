@@ -414,3 +414,38 @@ body.fondo-rick::before {
     max-width: 200px;
   }
 }
+
+/* =========================================================
+   ✅ MENÚ EN 2 FILAS SIMÉTRICAS (SOLO EN PC)
+========================================================= */
+@media (min-width: 901px) {
+
+  .nav-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-menu {
+    display: grid;
+    grid-template-columns: repeat(12, auto);  /* 12 columnas */
+    grid-auto-rows: auto;
+    gap: 14px 22px;                          /* alto / ancho */
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-item a {
+    padding: 8px 14px;
+    white-space: nowrap;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+
+  .nav-item a:hover {
+    background: #2563eb;
+  }
+}
