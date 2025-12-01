@@ -1,5 +1,5 @@
 // =====================================
-// CONFIGURACIÓN GENERAL
+// ✅ CONFIGURACIÓN GENERAL
 // =====================================
 const OPENWEATHER_API_KEY = "4c18b2eb51944a9b42d33765242e6dc9";
 
@@ -14,8 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
     formClima.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const ciudad = document.getElementById("ciudad").value.trim();
+      const ciudadInput = document.getElementById("ciudad");
       const resultado = document.getElementById("resultadoClima");
+
+      if (!ciudadInput || !resultado) return;
+
+      const ciudad = ciudadInput.value.trim();
 
       if (!ciudad) {
         resultado.innerHTML = "❌ Ingrese una ciudad.";
@@ -29,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(url);
         const data = await response.json();
 
-        if (data.cod !== 200) {
+        if (!response.ok || data.cod !== 200) {
           resultado.innerHTML = "❌ Ciudad no encontrada.";
           return;
         }
@@ -44,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       } catch (error) {
+        console.error(error);
         resultado.innerHTML = "⚠️ Error al consultar el clima.";
       }
     });
@@ -57,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultadoPais = document.getElementById("resultadoPais");
 
   if (inputPais && btnBuscarPais && resultadoPais) {
+
     btnBuscarPais.addEventListener("click", async () => {
       const nombrePais = inputPais.value.trim();
 
@@ -69,12 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const resp = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(nombrePais)}`);
+
         if (!resp.ok) {
           resultadoPais.innerHTML = "❌ País no encontrado.";
           return;
         }
 
         const data = await resp.json();
+
+        if (!data || !data.length) {
+          resultadoPais.innerHTML = "❌ País no encontrado.";
+          return;
+        }
+
         const pais = data[0];
 
         resultadoPais.innerHTML = `
@@ -87,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       } catch (error) {
+        console.error(error);
         resultadoPais.innerHTML = "⚠️ Error al consultar el país.";
       }
     });
@@ -100,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultadoPokemon = document.getElementById("resultadoPokemon");
 
   if (inputPokemon && btnBuscarPokemon && resultadoPokemon) {
+
     btnBuscarPokemon.addEventListener("click", async () => {
       const nombrePokemon = inputPokemon.value.trim().toLowerCase();
 
@@ -112,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(nombrePokemon)}`);
+
         if (!resp.ok) {
           resultadoPokemon.innerHTML = "❌ Pokémon no encontrado.";
           return;
@@ -130,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       } catch (error) {
+        console.error(error);
         resultadoPokemon.innerHTML = "⚠️ Error al consultar el Pokémon.";
       }
     });
@@ -143,8 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultadoRick = document.getElementById("resultadoRick");
 
   if (inputRick && btnBuscarRick && resultadoRick) {
+
     btnBuscarRick.addEventListener("click", async () => {
-      const nombrePersonaje = inputRick.value.trim();
+      const nombrePersonaje = inputRick.value.trim().toLowerCase();
 
       if (!nombrePersonaje) {
         resultadoRick.innerHTML = "❌ Ingrese el nombre de un personaje.";
@@ -155,12 +173,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const resp = await fetch(`https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(nombrePersonaje)}`);
+
         if (!resp.ok) {
           resultadoRick.innerHTML = "❌ Personaje no encontrado.";
           return;
         }
 
         const data = await resp.json();
+
+        if (!data.results || !data.results.length) {
+          resultadoRick.innerHTML = "❌ Personaje no encontrado.";
+          return;
+        }
+
         const personaje = data.results[0];
 
         resultadoRick.innerHTML = `
@@ -172,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       } catch (error) {
+        console.error(error);
         resultadoRick.innerHTML = "⚠️ Error al consultar personaje.";
       }
     });
@@ -185,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultadoCripto = document.getElementById("resultadoCripto");
 
   if (inputCripto && btnBuscarCripto && resultadoCripto) {
+
     btnBuscarCripto.addEventListener("click", async () => {
       const nombreCripto = inputCripto.value.trim().toLowerCase();
 
@@ -197,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const resp = await fetch(`https://api.coingecko.com/api/v3/coins/${encodeURIComponent(nombreCripto)}`);
+
         if (!resp.ok) {
           resultadoCripto.innerHTML = "❌ Criptomoneda no encontrada.";
           return;
@@ -214,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       } catch (error) {
+        console.error(error);
         resultadoCripto.innerHTML = "⚠️ Error al consultar la criptomoneda.";
       }
     });
